@@ -19,7 +19,7 @@ impl Distribution<Direction> for Standard {
             0 => Direction::Forward,
             1 => Direction::Backward,
             2 => Direction::Right,
-            3 => Direction::Left,
+            _ => Direction::Left, // Catch all to avoid compile error, due to gen_range returns a u32, compiler does not know that argument constrain return value.
         }
     }
 }
