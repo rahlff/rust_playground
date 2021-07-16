@@ -1,15 +1,14 @@
+use sdl2::rect::Point;
 use crate::direction::Direction;
 
 pub struct Walker {
-    pub x: u16,
-    pub y: u16,
+    pub pos: Point,
 }
 
 impl Walker {
-    pub fn new(x:u16, y:u16) -> Walker {
+    pub fn new(x:i32, y:i32) -> Walker {
         let walker = Walker {
-            x,
-            y,
+            pos : Point::new(x,y),
         };
         walker
     }
@@ -19,16 +18,16 @@ impl Walker {
         match direction {
             Direction::Forward => {
                 // forward is up
-                self.y -= 1;
+                self.pos.y -= 1;
             },
             Direction::Backward =>{
-                self.y += 1;
+                self.pos.y += 1;
             },
             Direction::Left =>{
-                self.x -= 1;
+                self.pos.x -= 1;
             },
             Direction::Right =>{
-                self.x += 1;
+                self.pos.x += 1;
             },
         }
 

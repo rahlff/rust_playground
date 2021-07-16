@@ -1,7 +1,6 @@
 extern crate sdl2; 
 
 use sdl2::pixels::Color;
-use sdl2::rect::Point;
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
 use std::time::Duration;
@@ -27,7 +26,7 @@ pub fn main() {
 
     canvas.set_draw_color(Color::RGB(0,0,0));
     canvas.clear();
-    let _ = canvas.draw_point(Point::new(walker.x as i32, walker.y as i32));
+    let _ = canvas.draw_point(walker.pos);
     canvas.set_draw_color(Color::RGB(255,255,255));
 
     let mut event_pump = sdl_context.event_pump().unwrap();
@@ -43,7 +42,7 @@ pub fn main() {
         }
 
         walker.update();
-        let _ = canvas.draw_point(Point::new(walker.x as i32, walker.y as i32));
+        let _ = canvas.draw_point(walker.pos);
 
         canvas.present();
 
